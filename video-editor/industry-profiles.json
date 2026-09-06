@@ -1,0 +1,17 @@
+{
+  "spa": {
+    "label": "Spa / Thẩm mỹ / Chăm sóc da",
+    "accent_color_rgb": "2A6FE2",
+    "broll_keywords": ["skincare routine closeup", "facial spa treatment", "beauty salon relaxation", "cosmetic product flatlay"]
+  },
+  "bat-dong-san": {
+    "label": "Bất động sản",
+    "accent_color_rgb": "1F3B5C",
+    "broll_keywords": ["modern house exterior", "luxury apartment interior", "real estate agent tour", "city skyline sunset"]
+  },
+  "coach": {
+    "label": "Coach / Chuyên gia / Khoá học",
+    "accent_color_rgb": "2C6E4E",
+    "broll_keywords": ["business coaching session", "public speaking stage", "confident professional office", "workshop presentation"]
+  }
+}

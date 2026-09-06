@@ -1,0 +1,9 @@
+.env
+node_modules/
+__pycache__/
+*.pyc
+assets/music/*/*
+!assets/music/*/.gitkeep
+output/*
+!output/.gitkeep
+!output/sample.json

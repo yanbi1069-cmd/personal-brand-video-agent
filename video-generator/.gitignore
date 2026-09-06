@@ -1,0 +1,6 @@
+.env
+node_modules/
+voice-samples/
+output/*
+!output/.gitkeep
+!output/sample.json
