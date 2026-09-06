@@ -12,7 +12,7 @@ const { loadEnvVar } = require("./lib/env");
 const { buildAssCaptionsEstimated } = require("./lib/captions");
 
 const DEFAULT_VOICE_ID = "EXAVITQu4vr4xnSDxMaL"; // "Sarah" — giọng nữ trung tính, đa ngôn ngữ (ElevenLabs)
-const TTS_MODEL = "eleven-multilingual-v2";
+const TTS_MODEL = process.env.KYMA_TTS_MODEL || "eleven-multilingual-v2"; // vd KYMA_TTS_MODEL=eleven-turbo-v2-5 để giảm chi phí
 const SCRIPT_WRITER_OUTPUT_DIR = path.join(__dirname, "..", "..", "script-writer", "output");
 const BG_COLOR = "0x1F3B5C"; // nền đơn sắc tạm thời — B-roll thật thuộc bước edit hậu kỳ sau này
 const DIMENSION = { width: 720, height: 1280 };
