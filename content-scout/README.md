@@ -15,6 +15,13 @@ Cá nhân mới bắt đầu xây kênh nội dung để bán hàng, chưa có k
 Chi tiết đầy đủ: xem [spec.md](./spec.md).
 
 ## Setup
-1. Copy `.env.example` thành `.env`.
-2. Điền giá trị `APIFY_TOKEN` (lấy từ vault `content scout` trong 1Password).
+1. Đăng ký tài khoản miễn phí tại [apify.com](https://apify.com), vào **Settings → Integrations** để lấy API token.
+2. Copy `.env.example` thành `.env`, điền `APIFY_TOKEN=token_của_bạn`.
 3. Không commit file `.env` — đã bị chặn trong `.gitignore`.
+
+## Chạy
+```
+node scripts/search_youtube.js "<từ khoá ngách>"
+node scripts/search_youtube.js "spa thẩm mỹ chăm sóc da" 5
+```
+Kết quả lưu tại `output/youtube_<timestamp>.json`, dùng làm input cho `script-writer` ở bước tiếp theo.

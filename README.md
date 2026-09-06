@@ -24,12 +24,10 @@ video-editor
 
 ## 4 thư mục con
 
-- **[content-scout/](./content-scout)** — research video đang viral theo ngách trên YouTube (Apify), lấy transcript thật. Xem [spec](./content-scout/spec.md).
-- **[script-writer/](./script-writer)** — sinh kịch bản mới, nguyên bản, từ 1 video tham chiếu đang viral. Xem [spec](./script-writer/spec.md).
-- **[video-generator/](./video-generator)** — dựng video gốc, 2 nhánh: có mặt (avatar) hoặc no-face (2 nguồn giọng: thư viện có sẵn hoặc giọng chính chủ đã clone). Xem [README](./video-generator/README.md) và [spec](./video-generator/spec.md).
-- **[video-editor/](./video-editor)** — hậu kỳ theo ngành (`industry-profiles.json`: spa, bất động sản, coach), 2 phong cách dựng:
-  - B-roll thật từ Pexels/Pixabay (`scripts/edit_video.js`).
-  - Motion graphics tự vẽ bằng Pillow/ffmpeg, data-driven theo ngành, không hardcode nội dung (`motion_graphics/render.py`).
+- **[content-scout/](./content-scout)** — research video đang viral theo ngách trên YouTube (Apify), lấy transcript thật. [README](./content-scout/README.md) · [spec](./content-scout/spec.md).
+- **[script-writer/](./script-writer)** — sinh kịch bản mới, nguyên bản, từ 1 video tham chiếu đang viral. [README](./script-writer/README.md) · [spec](./script-writer/spec.md).
+- **[video-generator/](./video-generator)** — dựng video gốc, 2 nhánh: có mặt (avatar) hoặc no-face (2 nguồn giọng: thư viện có sẵn hoặc giọng chính chủ đã clone). [README](./video-generator/README.md) · [spec](./video-generator/spec.md).
+- **[video-editor/](./video-editor)** — hậu kỳ theo ngành (`industry-profiles.json`: spa, bất động sản, coach), 2 phong cách dựng: B-roll thật từ Pexels/Pixabay, hoặc motion graphics tự vẽ bằng Pillow/ffmpeg (data-driven theo ngành, không hardcode nội dung). [README](./video-editor/README.md) · [spec](./video-editor/spec.md).
 
 ## Nguyên tắc thiết kế xuyên suốt
 
@@ -39,7 +37,12 @@ video-editor
 
 ## Setup nhanh
 
-Mỗi thư mục con có `.env.example` riêng — copy thành `.env` và điền key thật (Kyma, HeyGen, Pexels, Pixabay tuỳ bước cần dùng). Yêu cầu chung: Node.js, Python 3 + Pillow (cho motion graphics), `ffmpeg`/`ffprobe` trong PATH.
+Mỗi thư mục con có `.env.example` riêng — copy thành `.env` và điền key thật (Apify, Kyma, HeyGen, Pexels, Pixabay tuỳ bước cần dùng, xem README từng thư mục để biết lấy ở đâu). Không cần `npm install` — chỉ dùng Node.js built-in, không có dependency ngoài.
+
+**Yêu cầu hệ thống:**
+- Node.js ≥ 18 (dùng `fetch` built-in).
+- Python 3 + `pip install Pillow` (chỉ cần cho motion graphics).
+- `ffmpeg`/`ffprobe` trong PATH.
 
 ```
 node content-scout/scripts/search_youtube.js "<từ khoá ngách>"

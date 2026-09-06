@@ -8,8 +8,8 @@ Cá nhân/chủ doanh nghiệp đã chạy `content-scout` để research conten
 ## Làm gì
 - Lấy file kết quả research mới nhất từ `../content-scout/output/` (hoặc chỉ định file cụ thể).
 - Chọn video tham chiếu: ưu tiên video có transcript thật + lượt xem cao nhất.
-- Gọi KYMA API (model `claude-haiku-4.5`) để phân tích cấu trúc/hook của video tham chiếu, rồi viết một kịch bản **hoàn toàn mới, không sao chép nguyên văn**, theo đúng ngách chỉ định.
-- Lưu kết quả JSON gồm: ngách, video tham chiếu, model dùng, kịch bản.
+- Gọi KYMA API để phân tích cấu trúc/hook của video tham chiếu, rồi viết một kịch bản **hoàn toàn mới, không sao chép nguyên văn**, theo đúng ngách chỉ định. Thử lần lượt 3 model theo thứ tự ưu tiên — `claude-haiku-4-5` → `gemini-2.5-flash` → `gpt-5.6-luna` — chỉ chuyển sang model kế tiếp khi model hiện tại báo tạm thời quá tải, không phải khi lỗi khác (sai key, hết credit...).
+- Lưu kết quả JSON gồm: ngách, video tham chiếu, model dùng, kịch bản đầy đủ (`script`) và tách riêng từng phần `sections: {hook, noidung, cta}` — dùng cho các bước sau (vd. dựng đồ hoạ theo từng đoạn ở `video-editor`).
 - In kịch bản ra màn hình để tự đọc/duyệt ngay.
 
 Chi tiết đầy đủ: xem [spec.md](./spec.md).
