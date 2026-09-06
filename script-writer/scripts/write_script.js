@@ -8,7 +8,7 @@ const { loadEnvVar } = require("./lib/env");
 
 // Thử theo thứ tự — nếu model đầu bị nhà cung cấp báo tạm thời quá tải, tự động rơi xuống model kế tiếp.
 const KYMA_MODELS = ["claude-haiku-4-5", "gemini-2.5-flash", "gpt-5.6-luna"];
-const CONTENT_SCOUT_OUTPUT_DIR = path.join(__dirname, "..", "..", "..", "content-scout", "output");
+const CONTENT_SCOUT_OUTPUT_DIR = path.join(__dirname, "..", "..", "content-scout", "output");
 
 // Nếu không truyền file cụ thể, lấy file .json mới nhất trong output/ của content-scout
 // (bỏ qua sample.json vì đó là dữ liệu mẫu đã che, không phải kết quả research thật).
