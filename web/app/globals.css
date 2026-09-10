@@ -138,6 +138,28 @@ button:disabled {
   margin-top: 24px;
 }
 
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 48px 0 24px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.success-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
 .spinner {
   display: inline-block;
   width: 16px;

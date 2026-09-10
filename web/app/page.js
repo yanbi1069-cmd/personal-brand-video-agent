@@ -10,6 +10,11 @@ export default function Home() {
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
 
+  const [email, setEmail] = useState("");
+  const [emailLoading, setEmailLoading] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (!niche.trim() || loading) return;
@@ -29,6 +34,28 @@ export default function Home() {
       setError(err.message);
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleSendTestEmail(e) {
+    e.preventDefault();
+    if (!email.trim() || emailLoading) return;
+    setEmailLoading(true);
+    setEmailError("");
+    setEmailSent(false);
+    try {
+      const res = await fetch("/api/send-test-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Có lỗi xảy ra.");
+      setEmailSent(true);
+    } catch (err) {
+      setEmailError(err.message);
+    } finally {
+      setEmailLoading(false);
     }
   }
 
@@ -91,6 +118,35 @@ export default function Home() {
           </p>
         </div>
       )}
+
+      <hr className="divider" />
+
+      <h2 className="section-title">📧 Test email tự động</h2>
+      <p className="subtitle">
+        Nhập đúng email bạn dùng để đăng ký tài khoản Resend (chế độ sandbox chỉ gửi được tới địa chỉ đó).
+      </p>
+      <form onSubmit={handleSendTestEmail}>
+        <div className="form-row">
+          <input
+            type="email"
+            placeholder="email@vidu.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button type="submit" disabled={emailLoading || !email.trim()}>
+            {emailLoading ? (
+              <>
+                <span className="spinner" />
+                Đang gửi...
+              </>
+            ) : (
+              "Gửi email test"
+            )}
+          </button>
+        </div>
+      </form>
+      {emailError && <div className="error-box">{emailError}</div>}
+      {emailSent && <div className="success-box">Đã gửi! Kiểm tra hộp thư (kể cả Spam/Promotions).</div>}
     </main>
   );
 }
